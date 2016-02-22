@@ -1,0 +1,35 @@
+doctype
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no")
+
+    title= heading
+    link(href="default.css" rel="stylesheet")
+
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/monokai_sublime.min.css" rel="stylesheet")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js")
+    script.
+      hljs.initHighlightingOnLoad();
+
+  body
+    #immaterial-design
+      header(style="background-image:url(http://edgy.black/storage/65f734b0-ec86-11e4-9199-79743990f7f2.png?1430102270000)")
+        h2
+          a(href="/")= title
+
+      #container
+        article
+          section!= content
+        nav
+          section
+            figure
+              img(src="https://s.gravatar.com/avatar/f000192f5043bd6399a7e9ec8d4c58cf?size=496&default=retro")
+
+            figcaption
+              h2 59naga
+              p なんやかんや
+          
+      footer
+        | ©2016 
+        a(href="https://twitter.com/horse_n_deer") 59naga

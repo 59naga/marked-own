@@ -1,0 +1,142 @@
+@font-face
+  font-family misakiL
+  src url(http://static.edgy.black/fonts/k8x12L.ttf)
+
+@font-face
+  font-family PixelMplus12
+  src url(http://static.edgy.black/fonts/PixelMplus12-Regular.ttf)
+
+@font-face
+  font-family PixelMplus12
+  font-weight bold
+  src url(http://static.edgy.black/fonts/PixelMplus12-Bold.ttf)
+
+meyer-reset()
+html,body
+  height 100%
+
+#immaterial-design
+  min-height 100%
+  // layouts
+  h1,h2,h3,h4,h5,h6
+    margin .5em 0
+    
+  hr
+    opacity .5
+    margin 1.5em 2em
+    border none
+    border-top dashed 2px
+  
+  > header
+    padding 0
+    height 5em
+    
+    position relative
+    h2
+      // 上下中央寄せ
+      absolute 0 0 0 0
+      margin auto
+      width 100%
+      height 1em
+      padding-bottom .1em
+      a
+        border-bottom 1em solid
+    
+  > #container
+    padding 0
+    
+    display flex
+    > *
+      margin 1em
+      
+    > article
+      flex 2
+      margin-right 0
+      
+      section
+        padding .5em 1em
+        
+      p
+        padding .5em
+        
+      ul
+        ul
+          padding-left 1em
+        
+        li:before
+          content: '・'
+          
+          li:before
+            content: '@'
+
+    > nav
+      flex 1
+      max-width 8em
+      
+      img
+        width 100%
+  
+  > footer
+    padding 0
+    padding 1em
+
+  // colors and backgrounds
+  color white
+  background-color #333
+  a
+    // color inherit
+    color #597edc
+  > header
+    background-attachment fixed
+    background-position top center
+    background-repeat no-repeat
+    background-size contain
+    h2
+      a
+        color white
+        text-decoration none
+        
+        transition border-color 1s
+        border-color alpha(white,0)
+        
+        &:hover
+          border-color alpha(white,1)
+      
+  > #container
+    article
+      section
+        color black
+        background-color white
+    
+  // fonts
+  font-family PixelMplus12,monospace
+  h1
+    font-size xx-large
+  h2
+    font-size x-large
+  h3
+    font-size large
+  h4
+    font-size medium
+  h5
+    font-size small
+  h6
+    font-size x-small
+    
+  em
+    font-style italic
+    
+  strong,b
+    font-weight bold
+
+  > header
+    h2
+      font-size 300%
+      overflow ellipsis
+  
+  > header
+  > footer
+    font-family misakiL,PixelMplus12,monospace
+    font-size xx-large
+    text-align center
+  

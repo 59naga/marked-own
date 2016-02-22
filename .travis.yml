@@ -1,0 +1,35 @@
+# Quick boot options
+sudo: false
+cache:
+  directories:
+    - node_modules
+
+# Ignore version tags
+branches:
+  except:
+    - /^v[0-9]/
+
+# Language options
+language: node_js
+node_js:
+  - 4
+
+# Coverage report
+after_success:
+  - export TRAVIS_PASSED=true
+  - npm install codeclimate-test-reporter --global
+  - codeclimate-test-reporter < coverage/lcov.info
+env:
+  global:
+    # CODECLIMATE_REPO_TOKEN
+    - secure: lIZBBTAQu3peLbrgqO5s1qQmlhrE/ZORlcAgus/fNdUNPqBiaGBDIe4y+aDyfg0YpPN6iEzSlOrMr/WGaLNL/+viFZ50KhuqmIDNjD54O1XvdjUFGrUO9UU+C9KuRnioLbq8C+OhAzEIJ4sxNhYwek5Q6QF0e0XF46pc5OFzD5GozUBvsMs0+fs0euhJOfjl2UrbPtaigKHgc4Bq3sA34/uacOgqK5n1NLskOP87/tyX+Z6QPw6cq8Z+BG8oSbyYOb2IKp2wbrgFIq2oO8sNQyNxpTLVrYV+1czI3kEGUgUxW790D2dl74XHX221LepYpcdx3wGQEDsruGdL9KTgyRcgLOUz3HOEKlyV7DYTugfUrp5NVSYiDqvXpiLtMSkXje2THvZgqGVZjp+d0Rfc1TaaKfVKR0lS43ftOpenrkfKwIdvPr3UFOZ0I4eDuPPvnF/y0K2zWG038I7NXpWvZarJM37UxcykuWlEqE4XPKD6oNLvcZrs7DLY4ZhwtUeZMH7x2qJKXbIT1xatNiLW09vAaf3Vj21DOQ0c5nyfvaF3m27lqBzKXVdk6CHr/6NiQePwLFLyhKBaNcYyFYTNcL/T97o1JCq5+x0XgOzt8UWbDLQZzPwIAHjt+pFOy3AIJ6Y94uDiJikd6KfRJmdimzQn2/Hnuap3NfHGbS9NteA=
+
+# Npm publish options
+deploy:
+  skip_cleanup: true# keep the devDependencies
+  provider: npm
+  email: i59naga@icloud.com
+  api_key:
+    secure: m0bUQ1QSgeK8/JrPcLI2AL5XR4T6SFTgfKIRrym/WvzJiZsOHtxixmcr4fn6ToNCscFLT3iVJFbPySC2Bib4jLQ2sKuruE7Gf8F9801joEMK1h8oaYX4WxLeThMP9eLgki+g2xWlKIqJc1YhZemr5a2GOaYTsvV9ioISiApuQp7cwe6PcpprKQ2gxkMIYI+wAtWzwmS1H3Q1pMZLSmX2IBHTNCLPVJdZBl6nHvFjRO+e5ks6UIX3AXRmnX2AEDB17cZLnm9wbMsqUq7Kjs37zaB6qXeHvgRuIlm7UKWilFAnKxUu2faQb4LRbX0W+pmRc5g2lEoO/MBuICA+5P4NjgehHA7HptyhtmHWigIFqY+ixjB/0k8nG1CpJq2GMzxt8h71Tcq7NjjeOFU4JtOc6bZefBkZ2yP0m4FbuJEBWcJUkep/5SfW2XMIk3GvY0StLTrY4JOLlO4k2k/DPpRzW+9lwHn+WlHyXPbmsX8pCO2qVC6c/hldeZIiy4o+VtnlHwC7nzScY86SWeNxbGs7Ut/cfCh0aJ/xFANmhkMXrntuu9QDNFBS/v+kwbDD07suoNU2futS3w/XUqXA1GfYZ+ym5YVSmc31uYZQqDFXdG7R3Pnh6V9lGKOye4bkXUV3eVxzF6Fa2O2d/NKnoaEohrch78RAxs2VUujzpTHRcJA=
+  on:
+    node: 4
