@@ -16,27 +16,53 @@ Marked-own
   </a>
 </p>
 
-> 
+> (WIP) Markdown publishing server.
 
-Installation
+CLI
 ---
 
 ```bash
-npm install marked-own --save
+npm install marked-own --global
 ```
 
-API
----
-
-## markedOwn(cwd) -> middleware
-
-Response the compiled html if the `.md` matches the `req.url`.
+# `mo` Command
 
 ```md
 <!-- index.md -->
 **Hello marked-own**
 
 ```
+
+```bash
+tree .
+
+# .
+# └── index.md
+mo
+#  ______              _             _
+# |  ___ \            | |           | |
+# | | _ | | ____  ____| |  _ ____ _ | |___ ___  _ _ _ ____
+# | || || |/ _  |/ ___) | / ) _  ) || (___) _ \| | | |  _ \
+# | || || ( ( | | |   | |< ( (/ ( (_| |  | |_| | | | | | | |
+# |_||_||_|\_||_|_|   |_| \_)____)____|   \___/ \____|_| |_|
+#
+#                 http://localhost:59798
+curl "http://localhost:59798" # or "http://localhost:59798/index"
+# <p><strong>Hello marked-own</strong></p>
+```
+
+`mo --help` check the list of options.
+
+API
+---
+
+```bash
+npm install marked-own --save
+```
+
+## markedOwn(cwd) -> middleware
+
+Response the compiled html if the `.md` matches the `req.url`.
 
 ```bash
 tree .

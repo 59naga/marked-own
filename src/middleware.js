@@ -14,7 +14,7 @@ const mkdirpAsync = Bluebird.promisify(mkdirp);
 const markedAsync = Bluebird.promisify(marked);
 
 // Public
-export default (cwd = process.cwd, options = {}) => {
+export default (cwd = process.cwd(), options = {}) => {
   const isDebug = process.env.NODE_ENV !== 'production';
   const pendingCaches = {};
 
@@ -29,14 +29,14 @@ export default (cwd = process.cwd, options = {}) => {
 
     const notFound = fs.existsSync(fileName) === false;
     const useCache = fs.existsSync(cacheName) && !isDebug;
-    const needCache = pendingCaches[cacheName] === undefined;
     if (notFound) {
       return next();
     }
     if (useCache) {
-      return res.sendFile(cacheName);
+      return next();
     }
-    if (needCache) {
+
+    if (pendingCaches[cacheName] === undefined) {
       pendingCaches[cacheName] = fs.readFileAsync(fileName)
       .then((data) => (
         markedAsync(data.toString(), options)
@@ -60,17 +60,12 @@ export default (cwd = process.cwd, options = {}) => {
       .then((cache) => (
         mkdirpAsync(path.dirname(cacheName))
         .then(() => fs.writeFileAsync(cacheName, cache))
-        .then(() => cache)
       ));
     }
 
-    return pendingCaches[cacheName].then((cache) => {
-      res.set('content-type', 'text/html');
-      res.end(cache);
-
-      if (isDebug) {
-        delete pendingCaches[cacheName];
-      }
+    return pendingCaches[cacheName].then(() => {
+      delete pendingCaches[cacheName];
+      return next();
     });
   };
 };

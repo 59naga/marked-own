@@ -1,0 +1,12 @@
+pixelated()
+  image-rendering -moz-crisp-edges    // Firefox
+  image-rendering -webkit-crisp-edges // Safari
+  image-rendering pixelated           // Chrome, Opera
+
+pointer()
+  cursor pointer
+  cursor hand
+  
+  &:hover
+    transition opacity .5s ease-out
+    opacity .5

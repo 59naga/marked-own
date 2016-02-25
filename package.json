@@ -1,15 +1,20 @@
 {
   "name": "marked-own",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha",
   "description": "Markdown publishing server",
+  "bin": {
+    "mo": "marked-own"
+  },
   "main": "lib",
   "files": [
     "lib",
-    "src"
+    "src",
+    "marked-own"
   ],
   "dependencies": {
     "bluebird": "^3.3.1",
     "cheerio": "^0.20.0",
+    "commander": "^2.9.0",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "kouto-swiss": "^0.11.14",
@@ -23,7 +28,7 @@
     "cover": "nyc --reporter=lcov --reporter=text npm run mocha",
     "mocha": "mocha --compilers js:espower-babel/guess",
     "lint": "eslint src test examples",
-    "example": "babel-node examples/use-layout/server.js",
+    "example": "abigail compile,'cd examples/use-layout && node ../../marked-own'",
     "prepublish": "node -e \"if(process.env.TRAVIS_PASSED){}else{process.exit(1)}\" && npm run compile || echo skip prepublish",
     "compile": "babel -V && babel src --out-dir lib"
   },
