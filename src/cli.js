@@ -1,3 +1,4 @@
+// Dependencies
 import program from 'commander';
 import packageJson from '../package.json';
 
@@ -5,13 +6,15 @@ import packageJson from '../package.json';
 // import express from 'express';
 // import markedOwn from './';
 
+// Main
 program
   .version(packageJson.version)
   .option('-c, --cwd <path>', 'Change static server base <path>', process.cwd())
   .option('-p, --port <number>', 'Change listen port <number>', process.env.PORT || 59798)
-  .option('-u, --use <path>', 'Utilize the Stylus plugin at <path>')
+  .option('-u, --use <path>', 'Add stylus plugin at <path[,path...]>')
   .parse(process.argv);
 
+// Routes & Boot
 const app = require('express')();
 app.use(require('./')(program.cwd, program));
 app.listen(program.port, () => {

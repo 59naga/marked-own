@@ -1,5 +1,6 @@
 _cache
 .html
+*.css
 
 Thumbs.db    
 .DS_Store   
@@ -9,5 +10,3 @@ npm-debug.log
 .nyc_output   
 coverage    
 lib
-
-*.css
